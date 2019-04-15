@@ -16,26 +16,8 @@ nav{
     background:#9962af;
     width: 100%;
 }
-div.search p{
-    padding:0px;
-    padding-top:5px;
-    padding-left:10px;
-    padding-right:10px;
-    margin:0px;
-}
-div.search{
-    color: white;
-    display: flex;
-    justify-content: flex-start; 
-    padding: 5px;
-}
-div.search img{
-    height: 25px;
-    padding-top: 5px;
-    padding-left: 10px;
-}
 div.menu{
-    padding: 12px;
+    padding: 10px;
     padding-left: 5px;    
 }
 div.menu a{ 
@@ -55,6 +37,38 @@ img.logo{
     padding-left: 25px;
     width: 100px;
     height: 100px;
+}
+div.search * {box-sizing: border-box;}
+div.search form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
+div.search input {
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+  border: 2px solid rgb(179, 136, 207);
+  border-radius: 5px;
+  outline: none;
+  background: rgb(242, 223, 245);
+  color: rgb(63, 51, 66);
+}
+div.search button {
+  position: absolute; 
+  top: 0;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: rgb(179, 136, 207);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+div.search button:before {
+  content: "🔎";
+  font-size: 16px;
+  color: #F9F0DA;
 }
 h1.logo{
     font-family: 'Playfair Display SC';
