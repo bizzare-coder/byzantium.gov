@@ -1,112 +1,135 @@
-
 html, body {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 header{
-	display: flex; 
-    justify-content: space-between;
-    flex-wrap: wrap;
-	align-items: center;
-    background:#5d366d;
+display: flex; 
+  justify-content: space-between;
+  flex-wrap: wrap;
+align-items: center;
+  background:#5d366d;
+}
+@-webkit-keyframes test {
+  0% {
+    background-image: url('../img/banners/001.jpg');
+  }
+  20% {
+    background-image: url('../img/banners/002.jpg');
+  }
+  40% {
+    background-image: url('../img/banners/003.jpg');
+  }
+  60% {
+    background-image: url('../img/banners/004.jpg');
+  }
+  80% {
+    background-image: url('../img/banners/005.jpg');
+  }
+  100% {
+    background-image: url('../img/banners/001.jpg');
+  }
 }
 div.banner{
-    -webkit-mask-image: -webkit-gradient(
-        linear, left top, right top, 
-        color-stop(0.00,  rgba(0,0,0,0)),
-        color-stop(0.35,  rgba(0,0,0,0.5)),
-        color-stop(0.50,  rgba(0,0,0,1)),
-        color-stop(0.65,  rgba(0,0,0,0.5)),
-        color-stop(1.00,  rgba(0,0,0,0)));
-    flex: 1 0 auto;
-    background-image:url("../img/banners/003.jpg");
-    background-position:center center;
-    background-size:cover;
-    height: 200px;
+  -webkit-mask-image: -webkit-gradient(
+      linear, left top, right top, 
+      color-stop(0.00,  rgba(0,0,0,0)),
+      color-stop(0.35,  rgba(0,0,0,0.5)),
+      color-stop(0.50,  rgba(0,0,0,1)),
+      color-stop(0.65,  rgba(0,0,0,0.5)),
+      color-stop(1.00,  rgba(0,0,0,0)));
+      -webkit-animation-name: test;
+      -webkit-animation-duration: 10s;
+      -webkit-animation-iteration-count: 2;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-timing-function: linear;
+  flex: 1 0 auto;
+  background-position:center center;
+  background-size:cover;
+  height: 200px;
 }
 nav{
-	display: flex; 
-	justify-content: space-between;
-    background:#9962af;
-    width: 100%;
+display: flex; 
+justify-content: space-between;
+  background:#9962af;
+  width: 100%;
 }
 div.logo
 {
-	display: flex; 
-    justify-content: flex-start;
-    flex-wrap: wrap;
-	align-items: center;
+display: flex; 
+  justify-content: flex-start;
+  flex-wrap: wrap;
+align-items: center;
 }
 div.menu{
-    padding: 10px;
-    padding-left: 5px;    
+  padding: 10px;
+  padding-left: 5px;    
 }
 div.menu a{ 
-    color: white;
-    padding: 10px;
-    text-decoration: none;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
 }
 div.menu a:hover {
-    color: #d0abdf;
+  color: #d0abdf;
 }
 div.menu a:active {
-    color: #e6ccf0;
-    background: #5d366d;
+  color: #e6ccf0;
+  background: #5d366d;
 }
 div.logo img{
-    padding: 10px;
-    padding-left: 25px;
-    width: 100px;
-    height: 100px;
+  padding: 10px;
+  padding-left: 25px;
+  width: 100px;
+  height: 100px;
 }
 div.search * {box-sizing: border-box;}
 div.search form {
-  position: relative;
-  width: 300px;
-  margin: 0 auto;
+position: relative;
+width: 300px;
+margin: 0 auto;
 }
 div.search input {
-  width: 100%;
-  height: 30px;
-  padding-left: 10px;
-  border: 2px solid rgb(179, 136, 207);
-  border-radius: 5px;
-  outline: none;
-  background: rgb(242, 223, 245);
-  color: rgb(63, 51, 66);
+width: 100%;
+height: 30px;
+padding-left: 10px;
+border: 2px solid rgb(179, 136, 207);
+border-radius: 5px;
+outline: none;
+background: rgb(242, 223, 245);
+color: rgb(63, 51, 66);
 }
 div.search button {
-  position: absolute; 
-  top: 0;
-  right: 0px;
-  width: 30px;
-  height: 30px;
-  border: none;
-  background: rgb(179, 136, 207);
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
+position: absolute; 
+top: 0;
+right: 0px;
+width: 30px;
+height: 30px;
+border: none;
+background: rgb(179, 136, 207);
+border-radius: 0 5px 5px 0;
+cursor: pointer;
 }
 div.search button:before {
-  content: "🔎";
-  font-size: 16px;
-  color: #F9F0DA;
+content: "🔎";
+font-size: 16px;
+color: #F9F0DA;
 }
 footer {
-    color: white;
-    background: #3c1b49;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    height: 2.5rem;
+  color: white;
+  background: #3c1b49;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 2.5rem;
 }
 footer td{
-    padding-top:10px;
-    padding-left:10px;
+  padding-top:10px;
+  padding-left:10px;
 }
 div.logo h1{
-    font-family: 'Playfair Display SC';
-    color: white;
-    border-left: 2px solid #ccc; /* Параметры линии */ 
-    margin-left: 20px; /* Отступ слева */
-    padding-left: 10px; /* Расстояние от линии до текста */ 
+  font-family: 'Playfair Display SC';
+  color: white;
+  border-left: 2px solid #ccc; /* Параметры линии */ 
+  margin-left: 20px; /* Отступ слева */
+  padding-left: 10px; /* Расстояние от линии до текста */ 
 }
