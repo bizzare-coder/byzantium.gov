@@ -9,16 +9,14 @@
     <body>
         <!--Здесь у нас идёт описание кода шапки-->
         <header>
-                <img src="img/logo.png" class="logo">
-                <h1 class="logo">Правительство Ромейской <br> Империи</h1>
+                <div class="logo">
+                    <img src="img/logo.png">
+                    <h1>Правительство Ромейской <br> Империи</h1>
+                </div>
+                <div class="banner"></div>
+                <!--Здесь у нас навигация-->
                 <nav>
-                    <div class="search">
-                        <p>Поиск:</p>
-                        <form>
-                            <input type="text" class=".find">
-                        </form>
-                        <a href="#"><img src="img/search.png"></a>
-                    </div>
+                    <!--Разделы сайта-->
                     <div class="menu">
                         <a href="#">О правительстве</a>
                         <a href="#">Новости</a>
@@ -29,10 +27,26 @@
                         <a href="#">Гражданский форум</a>
                         <a href="#">Войти</a>
                     </div>
+                    <!--Здесь поиск-->
+                    <div class="search">
+                        <table>
+                        <tr><td style="vertical-align: middle">
+                        <form action="" method="get">
+                            <input name="s" placeholder="Искать здесь..." type="search">
+                            <button type="submit"></button>
+                        </form>
+                        </td></tr>
+                        </table>
+                    </div>
                 </nav>
         </header>
+        <!--Здесь идёт описание подвала сайта-->
         <footer>
-		Copyright (с) 2019 Byzantine Foundation
+            <table>
+                <tr>
+                    <td style="vertical-align: middle">Copyright (с) 2019 Byzantine Foundation </td>
+                </tr>
+            </table>
         </footer>
     </body>
 </html>
