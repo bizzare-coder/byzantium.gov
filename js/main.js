@@ -1,13 +1,18 @@
-e = document.getElementsByTagName("article")[0];
-e.appendChild(document.createTextNode(""));
-n = document.getElementById("menu").childNodes;
-s=1;
-o=1;
+e = document.getElementsByTagName("article")[0]; //Сохраням узел области контента
+e.appendChild(document.createTextNode("")); //Создаём текстовый узел
+n = document.getElementById("menu").childNodes; //Сохраняем раздел с меню
+s=1; //Номер выделенного узла
+o=1; //Номер наведённого узла
+//Нумреция по нечетным, так как перенос на следующую строку в коде html считается отдельным текстовым узлом
+
+//Эта функция вызывается для очистки стиля при уводе курсора с раздела
+//Меняя аттрибут класса мы меняем используемые элементом стили
 function OutItem(){
     if(s != o){
         n[o].className = "itemcalm";
     }
 }
+//Следующие функции вызываются при наведении
 function OverAbout()
 {
     if(s != 1){
@@ -72,6 +77,7 @@ function OverLogin()
         n[o].className = "itemcalm itemover";
     }
 }
+//Следующие функции вызываются при нажатии
 function ShowAbout()
 {
     n[s].className = "itemcalm";
@@ -135,4 +141,5 @@ function ShowLogin()
     n[s].className = "itemcalm itemselect";
     e.firstChild.data = "Войдите на сайт по вашему паспорту";
 }
+//Запускаем раздел по умолчанию
 ShowAbout();

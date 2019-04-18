@@ -1,7 +1,13 @@
+/*
+  Убираем отступы внутри страницы. Чтоб не было полей по краям
+*/
 html, body {
   margin: 0px;
   padding: 0px;
 }
+/*
+  Устанавливаем стиль шапки сайта и рассположение элементов её
+*/
 header{
 box-shadow: inset 0 0 100px rgb(42, 2, 58);
 display: flex; 
@@ -10,6 +16,9 @@ display: flex;
 align-items: center;
   background:#5d366d;
 }
+/*
+  Здесь у нас описана анимация банера. Постепенно сменяет одно изображение другим
+*/
 @keyframes abanner {
   0%, 6% {
     background-image: url('../img/banners/001.jpg');
@@ -39,7 +48,9 @@ align-items: center;
     background-image: url('../img/banners/001.jpg');
   }
 }
-div.banner{
+/*Описываем баннер*/
+.banner{
+  /*Градиент по краям*/
   -webkit-mask-image: -webkit-gradient(
       linear, left top, right top, 
       color-stop(0.00,  rgba(0,0,0,0)),
@@ -47,36 +58,56 @@ div.banner{
       color-stop(0.50,  rgba(0,0,0,1)),
       color-stop(0.65,  rgba(0,0,0,0.5)),
       color-stop(1.00,  rgba(0,0,0,0)));
-      animation-name: abanner;
-      animation-duration: 80s;
-      transition-property: background;
-      animation-iteration-count: infinite;
-      animation-direction: normal;
-      animation-timing-function: linear;
+  /*Настройка анимации*/
+  animation-name: abanner;
+  animation-duration: 80s;
+  transition-property: background;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: linear;
+  /*Параметры фона блока div*/
   flex: 1 0 auto;
-  background-image:url("../img/banners/003.jpg");
   background-position:center center;
   background-size:cover;
   height: 200px;
 }
+/*Фон навигационного раздела*/
 nav{
   display: flex; 
-  justify-content: space-between;
+  justify-content: space-between; /*расспределяем по ширине*/
   background: rgb(62,0,78);
+  /*Градиентная заливка раздела навигации*/
   background: linear-gradient(0deg, #5d366d 0%,#8a5b9c 100%); 
   width: 100%;
 }
-div.logo
+/*Настройка области логотипа*/
+.logo
 {
-display: flex; 
+  display: flex; 
   justify-content: flex-start;
   flex-wrap: wrap;
-align-items: center;
+  align-items: center;
 }
-div.menu{
+/*Свойства изображения в логотипе*/
+.logo img{
+  padding: 10px;
+  padding-left: 25px;
+  width: 100px;
+  height: 100px;
+}
+/*Свойства текста в области логотипа*/
+.logo h1{
+  font-family: 'Playfair Display SC';
+  color: white;
+  border-left: 2px solid #ccc; /* Параметры линии */ 
+  margin-left: 20px; /* Отступ слева */
+  padding-left: 10px; /* Расстояние от линии до текста */ 
+}
+.menu{
   padding: 10px;
   padding-left: 5px;    
 }
+/*Описываем вид нактивного раздела, наведённого и выделенного*/
 .itemcalm{ 
   color: white;
   padding: 10px;
@@ -90,19 +121,14 @@ div.menu{
   color: #e6ccf0;
   background: #5d366d;
 }
-div.logo img{
-  padding: 10px;
-  padding-left: 25px;
-  width: 100px;
-  height: 100px;
-}
-div.search * {box-sizing: border-box;}
-div.search form {
+/*Описание стиля для формы поиска*/
+.search * {box-sizing: border-box;}
+.search form {
 position: relative;
 width: 300px;
 margin: 0 auto;
 }
-div.search input {
+.search input {
 width: 100%;
 height: 30px;
 padding-left: 10px;
@@ -112,7 +138,7 @@ outline: none;
 background: rgb(242, 223, 245);
 color: rgb(63, 51, 66);
 }
-div.search button {
+.search button {
 position: absolute; 
 top: 0;
 right: 0px;
@@ -123,11 +149,12 @@ background: rgb(179, 136, 207);
 border-radius: 0 5px 5px 0;
 cursor: pointer;
 }
-div.search button:before {
+.search button:before {
 content: "🔎";
 font-size: 16px;
 color: #F9F0DA;
 }
+/*Стиль подвала сайта*/
 footer {
   color: white;
   background: #3c1b49;
@@ -139,11 +166,4 @@ footer {
 footer td{
   padding-top:10px;
   padding-left:10px;
-}
-div.logo h1{
-  font-family: 'Playfair Display SC';
-  color: white;
-  border-left: 2px solid #ccc; /* Параметры линии */ 
-  margin-left: 20px; /* Отступ слева */
-  padding-left: 10px; /* Расстояние от линии до текста */ 
 }
