@@ -11,22 +11,31 @@ align-items: center;
   background:#5d366d;
 }
 @keyframes abanner {
-  0%, 10% {
+  0%, 6% {
     background-image: url('../img/banners/001.jpg');
   }
-  15%, 30% {
+  9%, 18% {
     background-image: url('../img/banners/002.jpg');
   }
-  35%, 50% {
+  21%, 30% {
     background-image: url('../img/banners/003.jpg');
   }
-  55%, 70% {
+  33%, 42% {
     background-image: url('../img/banners/004.jpg');
   }
-  75%, 90% {
+  45%, 54% {
     background-image: url('../img/banners/005.jpg');
   }
-  95%, 100% {
+  57%, 66% {
+    background-image: url('../img/banners/006.jpg');
+  }
+  69%, 78% {
+    background-image: url('../img/banners/007.jpg');
+  }
+  81%, 90% {
+    background-image: url('../img/banners/008.jpg');
+  }
+  94%, 100% {
     background-image: url('../img/banners/001.jpg');
   }
 }
@@ -39,7 +48,7 @@ div.banner{
       color-stop(0.65,  rgba(0,0,0,0.5)),
       color-stop(1.00,  rgba(0,0,0,0)));
       animation-name: abanner;
-      animation-duration: 60s;
+      animation-duration: 80s;
       transition-property: background;
       animation-iteration-count: infinite;
       animation-direction: normal;
