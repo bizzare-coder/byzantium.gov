@@ -1,24 +1,19 @@
-/*
-  Убираем отступы внутри страницы. Чтоб не было полей по краям
-*/
+/*Убираем отступы у страницы*/
 html, body {
   margin: 0px;
   padding: 0px;
 }
-/*
-  Устанавливаем стиль шапки сайта и рассположение элементов её
-*/
+/*Задаём стиль для фона заголовка*/
 header{
-box-shadow: inset 0 0 100px rgb(42, 2, 58);
-display: flex; 
-  justify-content: space-between;
+  box-shadow: inset 0 0 100px rgb(42, 2, 58);
+  display: flex; /*Заголовок по ширине окна браузера*/
+  justify-content: space-between; /*Располагаем элементы по ширине*/
   flex-wrap: wrap;
-align-items: center;
-  background:#5d366d;
+  align-items: center;
+  background:#5d366d; /*Цвет фона*/
 }
-/*
-  Здесь у нас описана анимация банера. Постепенно сменяет одно изображение другим
-*/
+
+/*Записываем анимацию, задавая ключевые кадры*/
 @keyframes abanner {
   0%, 6% {
     background-image: url('../img/banners/001.jpg');
@@ -48,9 +43,9 @@ align-items: center;
     background-image: url('../img/banners/001.jpg');
   }
 }
-/*Описываем баннер*/
+/*Свойства для банера*/
 .banner{
-  /*Градиент по краям*/
+  /*заливаем градиентом*/
   -webkit-mask-image: -webkit-gradient(
       linear, left top, right top, 
       color-stop(0.00,  rgba(0,0,0,0)),
@@ -58,44 +53,47 @@ align-items: center;
       color-stop(0.50,  rgba(0,0,0,1)),
       color-stop(0.65,  rgba(0,0,0,0.5)),
       color-stop(1.00,  rgba(0,0,0,0)));
-  /*Настройка анимации*/
-  animation-name: abanner;
-  animation-duration: 80s;
-  transition-property: background;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-timing-function: linear;
-  /*Параметры фона блока div*/
+      animation-name: abanner;
+      animation-duration: 80s;
+      transition-property: background;
+      animation-iteration-count: infinite; /*Анимация повторяется вечно*/
+      animation-direction: normal;
+      animation-timing-function: linear;
   flex: 1 0 auto;
   background-position:center center;
   background-size:cover;
   height: 200px;
+  /*Изображение ставим в качестве фона, т.к это позволяет легко обрезать
+  его по размеру элемента*/
 }
-/*Фон навигационного раздела*/
+
+/*Создаём навигационную панель*/
 nav{
   display: flex; 
-  justify-content: space-between; /*расспределяем по ширине*/
+  justify-content: space-between;
   background: rgb(62,0,78);
-  /*Градиентная заливка раздела навигации*/
+  /*Заливаем градиентом*/
   background: linear-gradient(0deg, #5d366d 0%,#8a5b9c 100%); 
   width: 100%;
 }
-/*Настройка области логотипа*/
+/*Определяем стиль для области с логотипом*/
 .logo
 {
   display: flex; 
+  /*Элементы будут располагаться слева направо*/
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
 }
-/*Свойства изображения в логотипе*/
+/*настраиваем изображение логотипа*/
 .logo img{
   padding: 10px;
   padding-left: 25px;
   width: 100px;
   height: 100px;
 }
-/*Свойства текста в области логотипа*/
+
+/*Настраиваем заголовок логотипа*/
 .logo h1{
   font-family: 'Playfair Display SC';
   color: white;
@@ -103,11 +101,12 @@ nav{
   margin-left: 20px; /* Отступ слева */
   padding-left: 10px; /* Расстояние от линии до текста */ 
 }
+/*Задаём отстсупы для меню*/
 .menu{
   padding: 10px;
   padding-left: 5px;    
 }
-/*Описываем вид нактивного раздела, наведённого и выделенного*/
+/*Три различных стиля пункта меню*/
 .itemcalm{ 
   color: white;
   padding: 10px;
@@ -121,7 +120,7 @@ nav{
   color: #e6ccf0;
   background: #5d366d;
 }
-/*Описание стиля для формы поиска*/
+/*Стиль поисковой строки*/
 .search * {box-sizing: border-box;}
 .search form {
 position: relative;
@@ -154,7 +153,7 @@ content: "🔎";
 font-size: 16px;
 color: #F9F0DA;
 }
-/*Стиль подвала сайта*/
+/*Прижимай подвал к полу.*/
 footer {
   color: white;
   background: #3c1b49;
