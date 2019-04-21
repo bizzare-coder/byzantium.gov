@@ -9,11 +9,15 @@ header{
   display: flex; /*Заголовок по ширине окна браузера*/
   justify-content: space-between; /*Располагаем элементы по ширине*/
   flex-wrap: wrap;
+  width:100%;
   align-items: center;
   background:#5d366d; /*Цвет фона*/
+  position: fixed;
+  z-index: 9999;
+  box-shadow: 0em 0.4em 20px rgba(0, 0, 0, 0.5);
 }
-.otstup h1 {
-	padding-left: 10px
+#space{
+  height:239px;
 }
 
 /*Записываем анимацию, задавая ключевые кадры*/
@@ -156,12 +160,14 @@ content: "🔎";
 font-size: 16px;
 color: #F9F0DA;
 }
+article{
+  min-height:100vh;
+}
 /*Прижимай подвал к полу.*/
 footer {
   color: white;
   background: #3c1b49;
   position: absolute;
-  bottom: 0px;
   width: 100%;
   height: 2.5rem;
 }
