@@ -12,6 +12,9 @@ header{
   align-items: center;
   background:#5d366d; /*Цвет фона*/
 }
+.otstup h1 {
+	padding-left: 10px
+}
 
 /*Записываем анимацию, задавая ключевые кадры*/
 @keyframes abanner {
