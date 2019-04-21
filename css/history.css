@@ -1,0 +1,15 @@
+.treeHTML { /*Цвет фона меню*/
+	background: rgb(153, 50, 203);
+}
+.treeHTML p:first-of-type{ /*Цвет фона первого уровня меню*/
+	background: rgb(233, 99, 128);
+}
+.treeHTML div p:first-of-type{ /*Цвет фона второго уровня меню*/
+	background: rgb(207, 159, 105);
+}
+.treeHTML div div p:first-of-type{ /*Цвет фона третьего уровня меню*/
+	background: rgb(129, 207, 105);
+}
+.treeHTML div div div p:first-of-type{ /*Цвет фона четвёртого уровня меню*/
+	background: rgb(105, 124, 207);
+}
