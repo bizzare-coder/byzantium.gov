@@ -14,8 +14,8 @@ header{
   background:#5d366d; /*Цвет фона*/
   position: fixed;
   z-index: 9999;
-  box-shadow: 0em 0.4em 20px rgba(0, 0, 0, 0.5);
 }
+
 #space{
   height:238px;
 }
@@ -81,6 +81,7 @@ nav{
   background: rgb(62,0,78);
   /*Заливаем градиентом*/
   background: linear-gradient(0deg, #5d366d 0%,#8a5b9c 100%); 
+  box-shadow: 0em 0.4em 20px rgba(0, 0, 0, 0.5);
   width: 100%;
 }
 /*Определяем стиль для области с логотипом*/
