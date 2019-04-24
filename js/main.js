@@ -8,7 +8,27 @@ o=1; /*храним номер текущего наведённого пунк�
 поэтому у узлов пунктов менб лишь нечетные номера*/
 xhr = new XMLHttpRequest(); /*Создаём новый объект для запросов http*/
 par = new DOMParser(); /*создаём парсер*/
-
+//Функция проверки того что пользователь вощел на сайт
+function checkLogin(){
+    xhr.open("GET", "php/check.php", false);
+    xhr.send(null);
+    return xhr.responseText == ""; 
+}
+//Получаем логин текущего пользователя
+function getLogin(){
+    xhr.open("GET", "php/getlogin.php", false);
+    xhr.send(null);
+    return xhr.responseText;    
+}
+//Меняем внешний вид пункта войти в зависимости от того вошел юзверь или нет
+function logonView(){
+    l = document.getElementsByName("login")[0];
+    if (checkLogin()){
+        l.innerHTML = getLogin();
+    } else {
+        l.innerHTML = "Войти";
+    }
+}
 /*
 Эта функция вставляет скриптовый тег в голову документа
 В качестве параметров берёт адрес и соедржимое тега
@@ -278,7 +298,12 @@ function ShowLogin()
     n[s].className = "itemcalm";
     s = 15;
     n[s].className = "itemcalm itemselect";
-    xhr.open("GET", "html/login.html", false);
+    if(checkLogin()){
+        addr = "html/user.html";
+    } else {
+        addr = "html/login.html";
+    }
+    xhr.open("GET", addr, false);
     xhr.send(null);
     res = xhr.responseText;
     res = par.parseFromString(res,"text/html");

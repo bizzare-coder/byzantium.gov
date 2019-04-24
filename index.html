@@ -9,7 +9,7 @@
         <script defer src="js/main.js">
         </script>
     </head>
-    <body>
+    <body onload="logonView()">
         <!--Здесь у нас идёт описание кода шапки-->
         <header>
                 <div class="logo">
@@ -32,7 +32,7 @@
                         <a href="#law" onclick="ShowLaw()" class = "itemcalm" onmouseover="OverLaw()" onmouseout="OutItem()">Законы</a>
                         <a href="#reports" onclick="ShowReports()" class = "itemcalm" onmouseover="OverReports()" onmouseout="OutItem()">Обращения</a>
                         <a href="#forum" onclick="ShowForum()" class = "itemcalm" onmouseover="OverForum()" onmouseout="OutItem()">Форум</a>
-                        <a href="#login" onclick="ShowLogin()" class = "itemcalm" onmouseover="OverLogin()" onmouseout="OutItem()">Войти</a>
+                        <a href="#login" name="login" onclick="ShowLogin()" class = "itemcalm" onmouseover="OverLogin()" onmouseout="OutItem()">Войти</a>
                     </div>
                     <!--Здесь поиск-->
                     <div class="search">

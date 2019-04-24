@@ -4,7 +4,7 @@
     function addUser($users_login, $users_password, $users_status, $users_email, $connect)
     {
         $err = array();
-
+        #идет проврека пользователя на соответствие правилам регистрации
         if(!preg_match("/^[a-zA-Z0-9]+$/",$users_login))
         {
             $err[] = "Логин может состоять только из букв английского алфавита и цифр!";
@@ -15,7 +15,7 @@
             $err[] = "Логин должен быть не меньше 3-х символов и не больше 30!";
         }
 
-        if (!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $users_email)) {
+        if (!filter_var($users_email, FILTER_VALIDATE_EMAIL)) {
             $err[] = "Адрес указан не правильно.";
         }
 
@@ -29,6 +29,7 @@
         if ($res["count(users_id)"]>0){
             $err[] = "Пользователь с таким email уже существует";  
         }
+        #Если все норм создаём юзверя и шифруем пароль
         if(count($err) == 0){
             $password = md5(md5(trim($users_password)));
             $add = $connect->query("INSERT INTO byzantium_bd.users (users_id, users_login, users_password, users_status, users_email) VALUES  (NULL, '$users_login', '$password', '$users_status', '$users_email')");
@@ -39,7 +40,9 @@
             {
               print $error." ";
             }  
-          }
+        } else {
+            print "Вы успешно зарегистрировались! Введите ваши логин и пароль и нажмите <вход>";
+        }
     }
     addUser($_POST["login"], $_POST["passw"], "civil", $_POST["email"], $connect);
 ?>
