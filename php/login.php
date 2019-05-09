@@ -2,14 +2,13 @@
     function generateCode($length=6) {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
         $code = "";
-        $clen = strlen($chars) - 1;  
+        $clen = strlen($chars) - 1;
         while (strlen($code) < $length) {
-            $code .= $chars[mt_rand(0,$clen)];  
+            $code .= $chars[mt_rand(0,$clen)];
         }
         return $code;
     }
-    $connect = new mysqli("localhost", "root", "Bazilevs1488", "byzantium_bd" );
-    $connect->query("SET NAMES 'utf8' ");
+    include 'conf.php';
     if (isset($_COOKIE['errors'])){
         $errors = $_COOKIE['errors'];
         setcookie('errors', '', time() - 60*24*30*12, '/');
@@ -20,10 +19,10 @@
     {
       # Генерируем случайное число и шифруем его
       $hash = md5(generateCode(10));
-           
+
       # Записываем в БД новый хеш авторизации и IP
       mysqli_query($connect, "UPDATE users SET users_hash='".$hash."' WHERE users_id='".$res['users_id']."'");
-       
+
       # Ставим куки
       setcookie("id", $res['users_id'], time()+60*60*24*30);
       setcookie("hash", $hash, time()+60*60*24*30);

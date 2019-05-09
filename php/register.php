@@ -1,6 +1,5 @@
 <?php
-    $connect = new mysqli("localhost", "root", "Bazilevs1488", "byzantium_bd" );
-    $connect->query("SET NAMES 'utf8' ");
+    include 'conf.php';
     function addUser($users_login, $users_password, $users_status, $users_email, $connect)
     {
         $err = array();
@@ -9,7 +8,7 @@
         {
             $err[] = "Логин может состоять только из букв английского алфавита и цифр!";
         }
-         
+
         if(strlen($users_login) < 3 or strlen($users_login) > 30)
         {
             $err[] = "Логин должен быть не меньше 3-х символов и не больше 30!";
@@ -20,14 +19,14 @@
         }
 
         $query = mysqli_query($connect, 'SELECT count(users_id) FROM `users` WHERE users_login="'.$users_login.'"');
-        $res = $query->fetch_assoc(); 
+        $res = $query->fetch_assoc();
         if ($res["count(users_id)"]>0){
-            $err[] = "Пользователь с таким логином уже существует";  
+            $err[] = "Пользователь с таким логином уже существует";
         }
         $query = mysqli_query($connect, 'SELECT count(users_id) FROM `users` WHERE users_email="'.$users_email.'"');
-        $res = $query->fetch_assoc(); 
+        $res = $query->fetch_assoc();
         if ($res["count(users_id)"]>0){
-            $err[] = "Пользователь с таким email уже существует";  
+            $err[] = "Пользователь с таким email уже существует";
         }
         #Если все норм создаём юзверя и шифруем пароль
         if(count($err) == 0){
@@ -39,7 +38,7 @@
             foreach($err AS $error)
             {
               print $error." ";
-            }  
+            }
         } else {
             print "Вы успешно зарегистрировались! Введите ваши логин и пароль и нажмите <вход>";
         }
