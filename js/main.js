@@ -12,13 +12,13 @@ par = new DOMParser(); /*создаём парсер*/
 function checkLogin(){
     xhr.open("GET", "php/check.php", false);
     xhr.send(null);
-    return xhr.responseText == ""; 
+    return xhr.responseText == "";
 }
 //Получаем логин текущего пользователя
 function getLogin(){
     xhr.open("GET", "php/getlogin.php", false);
     xhr.send(null);
-    return xhr.responseText;    
+    return xhr.responseText;
 }
 //Меняем внешний вид пункта войти в зависимости от того вошел юзверь или нет
 function logonView(){
@@ -58,267 +58,53 @@ function OutItem(){
     }
 }
 /*
-Следующие функции применяют стиль при наведении
+ функция применяет стиль при наведении
 */
-function OverAbout()
+function OverItem(id)
 {
-    if(s != 1){
+    if(s != id){
         if(s != o) n[o].className = "itemcalm";
-        o = 1;
+        o = id;
         n[o].className = "itemcalm itemover";
     }
 }
-function OverNews()
-{
-    if(s != 3){
-        if(s != o) n[o].className = "itemcalm";
-        o = 3;
-        n[o].className = "itemcalm itemover";
-    }
-}
-function OverCulture()
-{
-    if(s != 5){
-        if(s != o) n[o].className = "itemcalm";
-        o = 5;
-        n[o].className = "itemcalm itemover";
-    }
-}
-function OverHistory()
-{
-    if(s != 7){
-        if(s != o) n[o].className = "itemcalm";
-        o = 7;
-        n[o].className = "itemcalm itemover";
-    }
-}
-function OverLaw()
-{
-    if(s != 9){
-        if(s != o) n[o].className = "itemcalm";
-        o = 9;
-        n[o].className = "itemcalm itemover";
-    }
-}
-function OverReports()
-{
-    if(s != 11){
-        if(s != o) n[o].className = "itemcalm";
-        o = 11;
-        n[o].className = "itemcalm itemover";
-    }
-}
-function OverForum()
-{
-    if(s != 13){
-        if(s != o) n[o].className = "itemcalm";
-        o = 13;
-        n[o].className = "itemcalm itemover";
-    }
-}
-function OverLogin()
-{
-    if(s != 15){
-        if(s != o) n[o].className = "itemcalm";
-        o = 15;
-        n[o].className = "itemcalm itemover";
-    }
-}
-//Следующие функции применяют стиль выделения для пунктов меню и загружают контент раздела
-function ShowAbout()
-{
-    //Применяем стиль к новому активному разделу
-    n[s].className = "itemcalm";
-    s = 1;
-    n[s].className = "itemcalm itemselect";
-    //Получаем текст нужного нам файла
-    xhr.open("GET", "html/about.html", false);
-    xhr.send(null);
-    res = xhr.responseText;
-    //Получаем дерево DOM из текста файла
-    res = par.parseFromString(res,"text/html");
-    //Находим там тело файла и сохраняем его
-    bod = res.getElementsByTagName("body")[0];
-    //Находим скрипты и линки
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    //Перебираем их все и добавляем в текущий документ
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    //Заполняем тег артикл содержимым тега body из загруженного файла
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
+//Показывает подгруженный контент
+function ShowHTML(addr, id){
+  n[s].className = "itemcalm";
+  s = id;
+  n[s].className = "itemcalm itemselect";
+  //Получаем текст нужного нам файла
+  xhr.open("GET", "html/"+addr, false);
+  xhr.send(null);
+  res = xhr.responseText;
+  //Получаем дерево DOM из текста файла
+  res = par.parseFromString(res,"text/html");
+  //Находим там тело файла и сохраняем его
+  bod = res.getElementsByTagName("body")[0];
+  //Находим скрипты и линки
+  scripts = res.getElementsByTagName("script");
+  links = res.getElementsByTagName("link");
+  //Перебираем их все и добавляем в текущий документ
+  for(var i = 0; i < scripts.length; i++){
+      src = scripts[i].getAttribute("src");
+      include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
+  }
+  for(var i = 0; i < links.length; i++){
+      include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
+  }
+  //Заполняем тег артикл содержимым тега body из загруженного файла
+  document.getElementsByTagName("article")[0].firstChild.remove();
+  document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
 }
 
-function ShowNews()
-{
-    n[s].className = "itemcalm";
-    s = 3;
-    n[s].className = "itemcalm itemselect";
-    xhr.open("GET", "html/news.html", false);
-    xhr.send(null);
-    res = xhr.responseText;
-    res = par.parseFromString(res,"text/html");
-    bod = res.getElementsByTagName("body")[0];
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
+function ShowLogin(){
+  if(checkLogin()){
+    addr = "user.html";
+  } else {
+    addr = "login.html";
+  }
+  ShowHTML(addr, 15);
 }
 
-function ShowCulture()
-{
-    n[s].className = "itemcalm";
-    s = 5;
-    n[s].className = "itemcalm itemselect";
-    xhr.open("GET", "html/culture.html", false);
-    xhr.send(null);
-    res = xhr.responseText;
-    res = par.parseFromString(res,"text/html");
-    bod = res.getElementsByTagName("body")[0];
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
-}
-
-function ShowHistory()
-{
-    n[s].className = "itemcalm";
-    s = 7;
-    n[s].className = "itemcalm itemselect";
-    xhr.open("GET", "html/history.html", false);
-    xhr.send(null);
-    res = xhr.responseText;
-    res = par.parseFromString(res,"text/html");
-    bod = res.getElementsByTagName("body")[0];
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
-}
-
-function ShowLaw()
-{
-    n[s].className = "itemcalm";
-    s = 9;
-    n[s].className = "itemcalm itemselect";
-    xhr.open("GET", "html/law.html", false);
-    xhr.send(null);
-    res = xhr.responseText;
-    res = par.parseFromString(res,"text/html");
-    bod = res.getElementsByTagName("body")[0];
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
-}
-
-function ShowReports()
-{
-    n[s].className = "itemcalm";
-    s = 11;
-    n[s].className = "itemcalm itemselect";
-    xhr.open("GET", "html/reports.html", false);
-    xhr.send(null);
-    res = xhr.responseText;
-    res = par.parseFromString(res,"text/html");
-    bod = res.getElementsByTagName("body")[0];
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
-}
-
-function ShowForum()
-{
-    n[s].className = "itemcalm";
-    s = 13;
-    n[s].className = "itemcalm itemselect";
-    xhr.open("GET", "html/forum.html", false);
-    xhr.send(null);
-    res = xhr.responseText;
-    res = par.parseFromString(res,"text/html");
-    bod = res.getElementsByTagName("body")[0];
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
-}
-
-function ShowLogin()
-{
-    n[s].className = "itemcalm";
-    s = 15;
-    n[s].className = "itemcalm itemselect";
-    if(checkLogin()){
-        addr = "html/user.html";
-    } else {
-        addr = "html/login.html";
-    }
-    xhr.open("GET", addr, false);
-    xhr.send(null);
-    res = xhr.responseText;
-    res = par.parseFromString(res,"text/html");
-    bod = res.getElementsByTagName("body")[0];
-    scripts = res.getElementsByTagName("script");
-    links = res.getElementsByTagName("link");
-    for(var i = 0; i < scripts.length; i++){
-        src = scripts[i].getAttribute("src");
-        include_script(scripts[i].getAttribute("src"), scripts[i].innerHTML);
-    }
-    for(var i = 0; i < links.length; i++){
-        include_link(links[i].getAttribute("href"), links[i].getAttribute("rel"));
-    }
-    document.getElementsByTagName("article")[0].firstChild.remove();
-    document.getElementsByTagName("article")[0].innerHTML = "<div>"+bod.innerHTML+"</div>";
-}
 //Устанавливаем разделом по умолчанию о правительстве
-ShowAbout();
+ShowHTML('about.html', 1);
