@@ -147,11 +147,13 @@ function createFile(addr, text){
   xhr.send(message);
 }
 function removeFile(id){
- message = "addr="+encodeURIComponent("html/"+getURL(id))+"&id="+encodeURIComponent(id);
+ if(confirm("Вы действительно хотите удалить раздел?")){
+ message = "addr="+encodeURIComponent("html/"+getURL(id)+".html")+"&id="+encodeURIComponent(id);
  xhr.open("POST", "php/removefile.php", false);
  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
  xhr.send(message);
  document.location.reload();
+}
 }
 function editFolder(id){
  if(checkLogin()){
@@ -237,7 +239,6 @@ function renameFile(id, newname){
  xhr.open("POST", "php/renamedir.php", false);
  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
  xhr.send(message);
- alert(xhr.responseText);
 }
 function saveFile(id){
  newname = document.getElementsByName("filename")[0].value;
