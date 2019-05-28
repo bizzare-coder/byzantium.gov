@@ -247,6 +247,24 @@ function saveFile(id){
  createFile("html/"+getURL(id)+".html", filetext);
  document.location.reload();
 }
+function sendComment(){
+  if(checkLogin()){
+   comment = document.getElementsByTagName("textarea")[0].value;
+   message = "comment="+encodeURIComponent(comment);
+   xhr.abort();
+   xhr.open("POST", "php/sendmessage.php", false);
+   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   xhr.send(message);
+ } else {
+   alert("Чтобы оставлять обращения, надо быть зарегистрированным пользователем!");
+ }
+ document.location.reload();
+}
+function loadComments(){
+  xhr.open("GET", "php/getmessages.php", false);
+  xhr.send(null);
+  document.getElementById("comments").innerHTML = xhr.responseText;
+}
 function loadEditor(id){
   text = LoadHTML("html/"+getURL(id)+".html");
   edit = "<form action='php/save.php' method='post'><table>"+

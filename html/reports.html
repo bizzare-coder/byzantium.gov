@@ -11,8 +11,25 @@
         -->
 		<link rel="stylesheet" href="css/reports.css">
     </head>
-    <body onload="loadTree(79)">
-		 <div class="flex" name="content">
-		 </div>
+    <body onload="loadComments()" class="comments">
+
+      <form style="padding-left:25vw; padding-top: 10px">
+        <table>
+          <tr width=100%>
+           <td>
+            <textarea style="width: 40vw; height:2vw; resize:none;">
+            </textarea>
+           </td>
+           <td>
+             <input type="button" value="Отправить" width=10vw onclick="sendComment()">
+           </td>
+          </tr>
+        </table>
+      </form>
+      <div id="comments">
+        <p class="username">Кирилл</p>
+        <p class="datetime">21.01</p>
+        <p class="comment">Арррря!</p>
+      </div>
     </body>
 </html>
